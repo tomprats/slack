@@ -3,7 +3,7 @@ module Slack
     url = "https://slack.com/oauth/authorize"
     options = {
       client_id: CLIENT_ID,
-      scope: "chat:write:user",
+      scope: "chat:write:bot, chat:write:user, users:read",
       redirect_uri: "http://lvh.me:3000"
     }
     "#{url}?#{URI.encode_www_form(options)}"
@@ -17,6 +17,6 @@ module Slack
       code: code,
       redirect_uri: "http://lvh.me:3000"
     }
-    client.request :get, encode(url, options)
+    get url, options
   end
 end

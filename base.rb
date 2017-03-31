@@ -8,17 +8,19 @@ module Slack
   def self.get(url, params)
     puts "URL: #{url}"
     puts "PARAMS: #{params}"
-    client.request :get, url, json: params
+    client.request :get, encode(url, params)
   end
 
   def self.post(url, params)
     puts "URL: #{url}"
     puts "PARAMS: #{params}"
-    client.request :post, url, json: params
+    client.request :post, encode(url, params)
   end
 
   def self.log(name, value)
     puts "BEGIN ############################### #{name} ############################### BEGIN"
+    puts value
+    puts "MIDDLE ############################## #{name} ############################## MIDDLE"
     puts value.inspect
     puts "END ################################# #{name} ################################# END"
   end

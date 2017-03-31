@@ -3,7 +3,7 @@ module Slack
     url = "https://slack.com/api/chat.postMessage"
     options = {
       token: ACCESS_TOKEN,
-      channel: "@heytaco",
+      channel: "#general",
       as_user: true,
       text: "#{channel} :taco: :taco: :taco: :taco: :taco:",
       parse: "full"
