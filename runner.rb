@@ -1,11 +1,11 @@
-Dir["./*.rb"].each { |file| require file unless file.match /runner\.rb/ }
+Dir["#{File.dirname(__FILE__)}/*.rb"].each { |file| require file unless file.match /runner\.rb/ }
 
 module Slack
   def self.run
     user = "@#{username}"
-    log "Taco", give_tacos(user)
+    log "Taco", give_tacos(user, 1, "Live life like you're eating your last taco")
     log "Giphy", giphy(user, "taylor swift")
-    log "Giphy", giphy("@tomprats", "taylor swift")
+    log "Giphy", giphy("@tom", "taylor swift")
   end
 end
 

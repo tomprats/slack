@@ -1,13 +1,14 @@
 module Slack
-  def self.give_tacos(channel)
-    url = "https://slack.com/api/chat.postMessage"
+  def self.give_tacos(user, amount = 1, message = nil)
+    user = user.gsub(/\A\W/, "")
+    uid = users.find{ |u| u["name"] == user }["id"]
+    url = "https://www.heytaco.chat/api/app.giveTaco"
     options = {
-      token: ACCESS_TOKEN,
-      channel: "#general",
-      as_user: true,
-      text: "#{channel} :taco: :taco: :taco: :taco: :taco:",
-      parse: "full"
+      token: TACO_SECRET,
+      uid: uid,
+      amount: amount,
+      message: message
     }
-    get url, options
+    client.post url, json: options
   end
 end
